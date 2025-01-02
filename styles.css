@@ -420,6 +420,14 @@ nav .fas{
         margin-right: 20px;
     }
 
+    /* ----------------portfolio------------------------ */
+    .layer{
+        padding-bottom: 10px;
+    }
+    .layer h3{
+        font-size: 20px;
+    }
+
     /* ----------contact-------------------- */
 
     .contact-left, .contact-right{
