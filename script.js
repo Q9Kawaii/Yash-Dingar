@@ -15,10 +15,13 @@ function opentab(tabname) {
 
 // ----------sidemeue-----------
 sidemenue = document.getElementById("sidemenue");
+fas = document.getElementById("fas");
       function openmenue() {
         sidemenue.style.right = "0";
+        fas.style.display = "none";
       }
       function closemenue() {
         sidemenue.style.right = "-200px";
+        fas.style.display = "block";
       }
 
