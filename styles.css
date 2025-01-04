@@ -443,3 +443,9 @@ nav .fas{
     margin-top: -40px;
     display: block;
 }
+
+.loader-1{
+    margin-top: -45px;
+    color: white !important;
+    display: none ;
+}

@@ -192,6 +192,9 @@
                         <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                         <button type="submit" class="btn btn-2">Submit</button>
                     </form>
+                    <div class="loader-1" id="loader-1">
+                        <p>Loading...</p>
+                    </div>
                     <span id="msg"></span>
                 </div>
             </div>
@@ -210,19 +213,42 @@
         const scriptURL = 'https://script.google.com/macros/s/AKfycby14guX3CH8WQGu1JzAHekENlG1m-11qbCm6-Ua-jGfelb59DOKvkZ8lXIZXqJvJouYRg/exec'
         const form = document.forms['submit-to-google-sheet']
         const msg = document.getElementById("msg");
+        const loader = document.getElementById("loader-1");
 
       
         form.addEventListener('submit', e => {
           e.preventDefault()
+
+          loader.style.display = "block";
+          msg.style.display="none";
+
           fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
+
+                loader.style.display="none"
+
                 msg.innerHTML = "Message sent SUCCESSFULLY"
-                setTimeout(function (){
-                    msg.innerHTML = ""
-                },5000)
+                msg.style.display="block"
+
+                setTimeout(() => {
+                    msg.innerHTML="";
+                    msg.style.display="none"
+                }, 5000);
                 form.reset()
             })
-            .catch(error => console.error('Error!', error.message))
+            .catch(error => {
+                loader.style.display="none";
+
+                msg.innerHTML = "error..."
+                msg.style.display="block"
+
+                setTimeout(() => {
+                    msg.innerHTML="";
+                    msg.style.display="none"
+                }, 5000);
+
+                form.reset()
+            })
         })
       </script>
 </body>
